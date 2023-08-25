@@ -527,6 +527,8 @@ public:
 	Control *find_next_valid_focus() const;
 	Control *find_prev_valid_focus() const;
 
+	Control *find_focus_neighbor(Side p_side);
+
 	void set_focus_neighbor(Side p_side, const NodePath &p_neighbor);
 	NodePath get_focus_neighbor(Side p_side) const;
 

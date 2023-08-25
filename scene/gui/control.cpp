@@ -2303,6 +2303,10 @@ Control *Control::_get_focus_neighbor(Side p_side, int p_count) {
 	return result;
 }
 
+Control *Control::find_focus_neighbor(Side p_side) {
+	return _get_focus_neighbor(p_side);
+}
+
 void Control::_window_find_focus_neighbor(const Vector2 &p_dir, Node *p_at, const Point2 *p_points, real_t p_min, real_t &r_closest_dist, Control **r_closest) {
 	if (Object::cast_to<Viewport>(p_at)) {
 		return; //bye
@@ -3442,6 +3446,8 @@ void Control::_bind_methods() {
 
 	ClassDB::bind_method(D_METHOD("set_localize_numeral_system", "enable"), &Control::set_localize_numeral_system);
 	ClassDB::bind_method(D_METHOD("is_localizing_numeral_system"), &Control::is_localizing_numeral_system);
+	
+	ClassDB::bind_method(D_METHOD("find_focus_neighbor", "side"), &Control::find_focus_neighbor);
 
 	ADD_GROUP("Layout", "");
 	ADD_PROPERTY(PropertyInfo(Variant::BOOL, "clip_contents"), "set_clip_contents", "is_clipping_contents");
